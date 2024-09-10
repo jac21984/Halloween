@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Flying Bats</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<header>
+	HALLOWEEN SIGN UP
+	</header>
 	<div id="background-wrap">
 		<div class="x1">
 			<div class="cloud"></div>
@@ -59,6 +61,21 @@
 
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+
+header{
+	text-align: center;
+	font-family: "Henny Penny", system-ui;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 100px;
+	color: orange;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: purple;
+	text-shadow: 10px 10px black;
+	z-index: 10;
+}
+
 body{
 	background-color: green;
 }
@@ -74,54 +91,114 @@ body{
 }
 
 @keyframes animateCloud{
-	0%{margin-left: -1000px;}
+	0%{margin-left: -800px;}
 	100%{margin-left: 100%;}	
 }
 
 .x1{
-	animation: animateCloud 35s linear infinite;
-	transform: scale{0.65};
+	position: absolute;
+	top: 50px;
 	
-	background-image: url("https://images.vexels.com/media/users/3/135050/isolated/lists/7076f73101afcbea2ca665f37c5f0bd9-cloud-silhouette-04.png");
-	height: 200px;
+	animation-name: animateCloud;
+	animation-duration: 300s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: -250s;
+	
+	transform: scale(1.0);
+	
+	height: 100px;
+	width: 100%;
+	
+	background-image: url("https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-01.png?raw=true");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .x2{
-	animation: animateCloud 20s linear infinite;
-	transform: scale{0.3};
+	position: absolute;
+	top: 170px;
 	
-	background-image: url("https://images.vexels.com/media/users/3/135050/isolated/lists/7076f73101afcbea2ca665f37c5f0bd9-cloud-silhouette-04.png");
-	height: 200px;
+	animation-name: animateCloud;
+	animation-duration: 100s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: -150s;
+	
+	transform: scale(0.9);
+	
+	height: 100px;
+	width: 100%;
+	
+	background-image: url("https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-02.png?raw=true");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .x3{
-	animation: animateCloud 30s linear infinite;
-	transform: scale{0.5};
+	position: absolute;
+	top: 230px;
 	
-	background-image: url("https://banner2.cleanpng.com/20180418/xce/kisspng-silhouette-clip-art-shadow-vector-5ad8005adea5b0.016744491524105306912.jpg");
-	height: 200px;
+	animation-name: animateCloud;
+	animation-duration: 150s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	
+	transform: scale(1.0);
+	
+	height: 100px;
+	width: 100%;
+	
+	background-image: url("https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-03.png?raw=true");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .x4{
-	animation: animateCloud 18s linear infinite;
-	transform: scale{0.4};
+	position: absolute;
+	top:350px;
 	
-	background-image: url("https://www.pngkit.com/png/full/815-8156520_clouds-clipart-silhouette-silhouette-cloud-vector-png.png");
-	height: 200px;
-
+	animation-name: animateCloud;
+	animation-duration: 150s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: -110s;
+	
+	transform: scale(1.0);
+	
+	height: 100px;
+	width: 100%;
+	
+	background-image: url("https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-04.png?raw=true");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .x5{
-	animation: animateCloud 25s linear infinite;
-	transform: scale{0.55};
+	position: absolute;
+	top: 375px;
 	
-	background-image: url("https://images.vexels.com/media/users/3/135050/isolated/lists/7076f73101afcbea2ca665f37c5f0bd9-cloud-silhouette-04.png");
-	height: 200px;
+	animation-name: animateCloud;
+	animation-duration: 100s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: -20s;
+	
+	transform: scale(1.0);
+	
+	height: 100px;
+	width: 100%;
+	
+	background-image: url("https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-05.png?raw=true");
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .cloud{
-	height: 200px;
+	object-fit: contain;
 	position: relative;
+	height: 100%;
 	width: 100%;
 }
 
