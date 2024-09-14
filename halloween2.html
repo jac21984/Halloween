@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	</head>
+	
+	<body>
+<!-- 		<div id="header">
+			Halloween
+		</div> -->
+		<div id="prallax-container">
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-01.svg');"></div>
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-02.svg');"></div>
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-03.svg');"></div>
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-04.svg');"></div>
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-05.svg');"></div>
+			<div style="background: url('https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-06.svg');"></div>
+		</div>
+	</body>
+	
+	<script>
+		window.addEventListener('scroll', () => {
+			let parent = document.getElementById('parallax-container');
+			let children = parent.getElementByTagName('dic');
+			for(let i = 0; i < children.length; i++) {
+				children[i].style.transform =  'translateY(-' + (window.pageYOffset * i / children.length) + 'px');
+			}
+			
+		}
+		, false)
+	</scipt>
+</html>
+
+<style>
+#parallax-container {
+	display: block;
+	height: 900px;
+}
+
+#parallax-container div {
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	background-position: center;
+	transform: translateY(0px);
+	height: 900px;
+	width: 100%;
+}
+
+
+</style>
