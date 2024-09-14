@@ -3,20 +3,26 @@
 <head>
     <title>Flying Bats</title>
 </head>
-<body id="body">
-	<!-- <div id="house">
-		<img src="https://github.com/jac21984/Halloween/blob/main/media/house-01.png?raw=true" id="house">
-	</div> -->
+<body id="body" onload="getValues()">
+	<div id="house"></div>
 	<!-- <div id="header">
 		HALLOWEEN SIGN UP
 	</div> -->
 	
-	<div id="clouds">
-		<div id="background-wrap">
+	<div id="parallax-container" class="parllax-container">
+		<div id="orange" class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-01.svg">
+		</div>
+		<div id="stars" class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-02.svg">
+		</div>
+		<div id="moon"class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-03.svg">
+		</div>
+		<div id="clouds" class="backParallax">
 			<div class="x1">
 				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-01.png?raw=true" class="cloud">
 			</div>
-			<!--
 			<div class="x2">
 				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-02.png?raw=true" class="cloud">
 			</div>
@@ -28,86 +34,187 @@
 			</div>
 			<div class="x5">
 				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-05.png?raw=true" class="cloud">
-			</div> -->
+			</div>
+		</div>
+		<div id="backtrees" class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-04.svg">
+		</div>
+		<div id="fronttrees" class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-05.svg">
+		</div>
+		<div id="house" class="backParallax">
+			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background-06.svg">
 		</div>
 	</div>
 	
-	<div id="forms">
+<!-- 	<div id="clouds">
+		<div id="background-wrap">
+			<div class="x1">
+				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-01.png?raw=true" class="cloud">
+			</div>
+			<div class="x2">
+				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-02.png?raw=true" class="cloud">
+			</div>
+			<div class="x3">
+				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-03.png?raw=true" class="cloud">
+			</div>
+			<div class="x4">
+				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-04.png?raw=true" class="cloud">
+			</div>
+			<div class="x5">
+				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-05.png?raw=true" class="cloud">
+			</div>
+		</div>
+	</div> -->
+	
+<!-- 	<div id="forms">
 		<form class="form-horizontal">
-			<fieldset>
+			<fieldset> -->
 
 				<!-- Text input -->
-				<div class="form-group">
+<!-- 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="name">Name</label>  
 				  <div class="col-md-4">
 				  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
 					
 				  </div>
-				</div>
+				</div> -->
 
 				<!-- Text input -->
-				<div class="form-group">
+<!-- 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="item">Whatcha Bringing</label>  
 				  <div class="col-md-4">
 				  <input id="item" name="item" type="text" placeholder="" class="form-control input-md">
 					
 				  </div>
-				</div>
+				</div> -->
 
 				<!-- Button -->
-				<div class="form-group">
+<!--				<div class="form-group">
 				  <label class="col-md-4 control-label btn-label" for="submit"></label>
 				  <div class="col-md-4">
 					<button id="submit" name="submit" class="submit">Submit</button>
 				  </div>
 				</div>
 
-			</fieldset>
+ 			</fieldset>
 		</form>
 		<table id="list" class="list">
 		</table>
-	</div>
+	</div> --->
 
-    <script>
-		
-		
-		(function(){
-
-			var parallax = document.querySelectorAll("body"),
-			speed = 0.5;
-
-			window.onscroll = function(){
-				[].slice.call(parallax).forEach(function(el,i){
-
-					var windowYOffset = window.pageYOffset,
-					elBackgrounPos = "50% " + (windowYOffset * speed) + "px";
-
-					el.style.backgroundPosition = elBackgrounPos;
-
-				});
-			};
-
-		})();
-	</script>
 </body>
 </html>
 
 <style>
 
-
-
 body{
-	/*aspect-ratio: 847/1226;*/
-	background: url("https://github.com/jac21984/Halloween/blob/main/media/sky-01.png?raw=true");
-	background-repeat: no-repeat;
-	
+	background-color: black;
+	background-size: cover;
 	margin: 0;
 	padding: 0;
-	z-index: 0;
 	overflow-x: hidden;
-	height: 100%;
+	height: 150vw;
+}
+
+#parallax-container{
+	display: block;
+	width: 100%;
+	height: max-content;
+	margin: 0;
+	padding: 0;
+	z-index: -1;
+}
+
+#parallax-container div {
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	background-position: center;
+	transform: translateY(0px);
+	width: 100%;
+	height: max-content;
+}
+
+#orange{
+	position: absolute;
+	z-index: 0;
+}
+
+#stars{
+	position: absolute;
+	z-index: 1;
+}
+
+#moon{
+	position: absolute;
+	z-index: 2;
+}
+
+#clouds{
+	position: absolute;
+	z-index: 3;
+}
+
+#backtrees{
+	position: absolute;
+	z-index: 4;
+}
+
+#fronttrees{
+	position: absolute;
+	z-index: 5;
+}
+
+#house{
+	position: absolute;
+	z-index: 6;
+}
+
+.cloud{
+	position: absolute;
+	z-index: 4;	
 }
 
 
 
 </style>
+
+<script>
+		
+		let baseHeight = 0;
+		let parent = "";
+		let translateYVal = 0;
+		
+		function getValues(){
+			parent = document.getElementById("parallax-container");
+			baseHeight = parent.clientHeight;
+			
+			console.log(parent);
+			console.log(baseHeight);
+		
+			window.onscroll = function() {parallaxscroll()};
+
+			function parallaxscroll () {
+				let children = document.getElementsByClassName("backParallax");
+				
+				for(let i = 0; i < children.length; i++) {
+					translateYVal = (window.pageYOffset * i / children.length);
+					children[i].style.transform =  "translateY(-" + translateYVal + "px)";
+				};
+				
+				/*let lastDivChild = parent.lastChild;
+				console.log("Parent Height: " + parent.clientHeight + "    Child Top: " + translateYVal);
+				
+				let newHeight = baseHeight - translateYVal;
+				
+				newHeight = newHeight + "px";
+				
+				console.log(newHeight);
+				
+				parent.style.height = newHeight;*/
+			}
+		}
+</script>
