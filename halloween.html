@@ -4,7 +4,7 @@
     <title>Flying Bats</title>
 </head>
 <body id="body" onload="getValues()">
-	<div id="house"></div>
+	<div></div>
 	<!-- <div id="header">
 		HALLOWEEN SIGN UP
 	</div> -->
@@ -20,7 +20,7 @@
 			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background/background-03.svg">
 		</div>
 		<div id="clouds" class="backParallax">
-			<div class="x1">
+			<!-- <div class="x1">
 				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-01.svg?raw=true" class="cloud">
 			</div>
 			<div class="x2">
@@ -34,7 +34,7 @@
 			</div>
 			<div class="x5">
 				<img src="https://github.com/jac21984/Halloween/blob/main/media/clouds/cloud-05.svg?raw=true" class="cloud">
-			</div>
+			</div> -->
 		</div>
 		<div id="backtrees" class="backParallax">
 			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background/background-04.svg">
@@ -46,6 +46,7 @@
 			<img src="https://raw.githubusercontent.com/jac21984/Halloween/main/media/background/background-06.svg">
 		</div>
 	</div>
+	<div id="blackout" class="blackout"></div>
 	
 <!-- 	<div id="clouds">
 		<div id="background-wrap">
@@ -108,70 +109,87 @@
 
 <style>
 
-body{
+html,body,#parallax-container{
 	background-color: black;
 	background-size: cover;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	height: 250vw;
+	height: 120vh;
 }
 
 #parallax-container{
-	display: block;
-	width: 100%;
-	height: max-content;
-	margin: 0;
+	position: relative;
+	width: 225%;
+	height: 200%;
 	padding: 0;
-	z-index: -1;
+	margin: 0;
+
 }
 
 #parallax-container div {
-	background-size: cover;
 	position: fixed;
-	top: 0;
+	padding: 0;
+	margin: 0;
+	width: 225vw;
+	height: 225vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+}
+
+.blackout{
+	background-color: black;
+	background-size: cover;
+	width: 100vw;
 	margin: 0;
 	padding: 0;
-	background-position: center;
-	transform: translateY(0px);
-	width: 100%;
-	height: max-content;
-	/*border: 5px solid green;*/
+	position: fixed;
+	
+	bottom: 0px;
+	z-index: 8;
 }
 
 #orange{
-	position: absolute;
+	
 	z-index: 0;
 }
 
 #stars{
-	position: absolute;
+	
 	z-index: 1;
 }
 
 #moon{
-	position: absolute;
+	
 	z-index: 2;
 }
 
 #clouds{
-	position: absolute;
+	
 	z-index: 3;
 }
 
 #backtrees{
-	position: absolute;
+	
 	z-index: 4;
 }
 
 #fronttrees{
-	position: absolute;
+	
 	z-index: 5;
 }
 
 #house{
-	position: absolute;
+	
 	z-index: 6;
+}
+
+#clouds{
+
+	width: 100vw;
+	height: 95vw;
+
 }
 
 .cloud{
@@ -183,14 +201,31 @@ body{
 }
 
 .bat{
-	width: 9vw;
+	width: 4vw;
 }
 
-@media only screen and (max-device-height: 100vw) {
-	/*#parallax-container div {
-		border-color: red;
-	}*/
+.x1{
+	position: absolute;
+	top: 10vh;
+	
+	animation-name: animateCloud;
+	animation-duration: 300s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	
+	transform: scale(.25);
 }
+
+
+@media screen and (max-height: 100vw) {
+	#parallax-container div{
+		width: 210vh;
+		height:210vh;
+	}
+
+}
+
 
 
 </style>
@@ -199,35 +234,53 @@ body{
 		
 		let baseHeight = 0;
 		let parent = "";
-		let translateYVal = 0;
+		let currentYVal = [];
+		let currentXVal = [];
+		let currentHVal = [];
 		
 		function getValues(){
 			parent = document.getElementById("parallax-container");
 			baseHeight = parent.clientHeight;
+			let children = document.getElementsByClassName("backParallax");
+			let blackout = document.getElementById("blackout");
+			console.log(blackout);
 			
-			console.log(parent);
-			console.log(baseHeight);
+			for(let i = 0; i < children.length; i++) {
+					currentYVal[i] = children[i].offsetTop;
+					currentXVal[i] = children[i].offsetLeft;
+					currentHVal[i] = parent.offsetHeight;
+					
+			};
 		
 			window.onscroll = function() {parallaxscroll()};
 
 			function parallaxscroll () {
-				let children = document.getElementsByClassName("backParallax");
-				
+				let transYChange = [];
+				let transYNew = [];
+				let newtransYVal = [];
 				for(let i = 0; i < children.length; i++) {
-					translateYVal = (window.pageYOffset * i / children.length);
-					children[i].style.transform =  "translateY(-" + translateYVal + "px)";
+					let translateYVal = ((window.pageYOffset * i / children.length)*2);
+					transYChange[i] = translateYVal;
+					newtransYVal = ((((translateYVal+currentYVal[i])/currentHVal[i])*100)+(50-((currentYVal[i]/currentHVal[i])*100)));
+					transYNew[i] = newtransYVal;
+					children[i].style.transform =  "translate(-50%, -" + newtransYVal + "%)";
+					if(i==(children.length-1)){
+						/*var bottomY = children[i].offsetParent.offsetHeight - children[i].offsetTop - children[i].offsetHeight;
+						blackout.style.top = bottomY + "px";*/
+						console.log(children[i].id);
+						let house = document.getElementById(children[i].id);
+						let boundingRect = house.getBoundingClientRect();
+						console.log(boundingRect.bottom);
+						let bottomY  = boundingRect.bottom;
+						blackout.style.top = bottomY + "px";
+					}
 				};
-				
-				/*let lastDivChild = parent.lastChild;
-				console.log("Parent Height: " + parent.clientHeight + "    Child Top: " + translateYVal);
-				
-				let newHeight = baseHeight - translateYVal;
-				
-				newHeight = newHeight + "px";
-				
-				console.log(newHeight);
-				
-				parent.style.height = newHeight;*/
+				/*console.clear();
+				console.log("CurrentY: " + currentYVal);
+				console.log("Height: " + currentHVal);
+				console.log("Change: " + transYChange);
+				console.log("NewY%: " + transYNew);
+				console.log("Blackout Height: " + blackout.style.height);*/
 			}
 		}
 		
