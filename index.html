@@ -115,7 +115,7 @@ html,body,#parallax-container{
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	height: 120vh;
+	min-height: 120vh;
 }
 
 #parallax-container{
@@ -265,24 +265,24 @@ html,body,#parallax-container{
 					transYNew[i] = newtransYVal;
 					children[i].style.transform =  "translate(-50%, -" + newtransYVal + "%)";
 					if(i==(children.length-1)){
-						/*var bottomY = children[i].offsetParent.offsetHeight - children[i].offsetTop - children[i].offsetHeight;
-						blackout.style.top = bottomY + "px";*/
-						console.log(children[i].id);
 						let house = document.getElementById(children[i].id);
 						let boundingRect = house.getBoundingClientRect();
-						console.log(boundingRect.bottom);
 						let bottomY  = boundingRect.bottom;
 						blackout.style.top = bottomY + "px";
 					}
 				};
-				/*console.clear();
-				console.log("CurrentY: " + currentYVal);
-				console.log("Height: " + currentHVal);
-				console.log("Change: " + transYChange);
-				console.log("NewY%: " + transYNew);
-				console.log("Blackout Height: " + blackout.style.height);*/
 			}
 		}
+		
+		function reportWindowSize() {
+						let house = document.getElementById("house");
+						let blackout = document.getElementById("blackout");
+						let boundingRect = house.getBoundingClientRect();
+						let bottomY  = boundingRect.bottom;
+						blackout.style.top = bottomY + "px";
+		}
+
+		window.onresize = reportWindowSize;
 		
 	const bats = 10;
 	
